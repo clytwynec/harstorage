@@ -14,7 +14,7 @@ setup(
     install_requires=[
         'pylons==1.0',
         'pymongo==2.7.2',
-        'webob==0.9.8',
+        'webob',
     ],
     packages=find_packages(),
     include_package_data=True,

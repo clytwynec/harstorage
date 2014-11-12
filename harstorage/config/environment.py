@@ -3,6 +3,7 @@ import os
 from mako.lookup import TemplateLookup
 from pylons.configuration import PylonsConfig
 from pylons.error import handle_mako_error
+from pylons import cache
 
 import harstorage.lib.app_globals as app_globals
 import harstorage.lib.helpers
@@ -28,9 +29,14 @@ def load_environment(global_conf, app_conf):
     config["pylons.app_globals"] = app_globals.Globals(config)
     config["pylons.h"] = harstorage.lib.helpers
 
+    # Get Mongo settings from environment or use local defaults
+    default_mongo_uri = "mongodb://admin:admin@localhost:27017/harstorage"
+    config["app_conf"]['mongo_uri'] = os.environ.get(
+        'MONGOHQ_URL', default_mongo_uri
+    )
+
     # Setup cache object as early as possible
-    import pylons
-    pylons.cache._push_object(config["pylons.app_globals"].cache)
+    cache._push_object(config["pylons.app_globals"].cache)
 
     # Create the Mako TemplateLookup, with the default auto-escaping
     config["pylons.app_globals"].mako_lookup = TemplateLookup(

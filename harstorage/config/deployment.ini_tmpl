@@ -22,12 +22,6 @@ static_version = 1.0
 
 mongo_replicate = false
 mongo_replset = repl1
-mongo_host = localhost
-mongo_port = 27017
-mongo_db   = harstorage
-mongo_auth = false
-mongo_user = admin
-mongo_pswd = admin
 
 cache_dir = %(here)s/data
 beaker.session.key = harstorage
