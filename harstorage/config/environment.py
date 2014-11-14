@@ -31,8 +31,8 @@ def load_environment(global_conf, app_conf):
 
     # Get Mongo settings from environment or use local defaults
     default_mongo_uri = "mongodb://admin:admin@localhost:27017/harstorage"
-    config["app_conf"]['mongo_uri'] = os.environ.get(
-        'MONGOHQ_URL', default_mongo_uri
+    config["app_conf"]["mongo_uri"] = os.environ.get(
+        "MONGOHQ_URL", default_mongo_uri
     )
 
     # Setup cache object as early as possible

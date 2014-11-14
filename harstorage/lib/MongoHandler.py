@@ -35,7 +35,7 @@ class MongoDB():
                     host=uri,
                 )[database][collection]
 
-            # Indecies
+            # Indices
             self.ensure_index()
         except Exception as error:
             # Exception type: Exception message
